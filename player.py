@@ -41,6 +41,15 @@ class Player:
                                      (self.x_position * self.board_size[2] + j * self.board_size[2] + 40,
                                       60 + (self.y_position + i) * self.board_size[2],
                                       self.board_size[2], self.board_size[2]))
+    def display2(self):
+        # Zeichnet die aktuelle Form basierend auf der Rotation
+        for i in range(4):
+            for j in range(4):
+                if (i * 4 + j) in self.shape[self.rotation]:
+                    pygame.draw.rect(self.screen, self.color,
+                                     (self.x_position * self.board_size[2] + j * self.board_size[2] + 450,
+                                      60 + (self.y_position + i) * self.board_size[2],
+                                      self.board_size[2], self.board_size[2]))
 
     def rotate(self):
         # Rotiert die Form

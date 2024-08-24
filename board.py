@@ -15,10 +15,19 @@ class Board:
                                      (x * self.board_size[2] + 40, 60 + y * self.board_size[2],
                                       self.board_size[2], self.board_size[2]))
 
+    def display2(self, screen):
+        for y in range(self.board_size[1]):
+            for x in range(self.board_size[0]):
+                if self.grid[y][x] != 0:
+                    pygame.draw.rect(screen, self.colors[y][x],
+                                     (x * self.board_size[2] + 450.5, 60 + y * self.board_size[2],
+                                      self.board_size[2], self.board_size[2]))
+
     def add_shape_to_board(self, player):
         for (x, y) in player.get_shape_positions():
-            self.grid[y][x] = 1
-            self.colors[y][x] = player.color
+            if 0 <= x < self.board_size[0] and 0 <= y < self.board_size[1]:
+                self.grid[y][x] = 1
+                self.colors[y][x] = player.color
 
     def is_collision(self, player):
         for (x, y) in player.get_shape_positions():
